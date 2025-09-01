@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Surprise Birthday Cake for My Pretty Friend!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+    background: linear-gradient(270deg, #667eea, #764ba2, #667eea);
+    background-size: 600% 600%;
+    animation: gradientBG 20s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: #2c3e50;
+  }
+
+  @keyframes gradientBG {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 25px;
+    padding: 50px 40px 80px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    max-width: 650px;
+    position: relative;
+    overflow: visible;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.2em;
+    color: #e84393;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(232,67,147,0.3);
+  }
+
+  .cake-container {
+    position: relative;
+    margin: 40px auto 30px;
+    width: 220px;
+    height: 180px;
+  }
+
+  /* Cake layers */
+  .cake-base, .cake-middle, .cake-top {
+    border-radius: 20px 20px 30px 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+  }
+
+  .cake-base {
+    width: 220px;
+    height: 70px;
+    background: linear-gradient(135deg, #e6b980 0%, #eacda3 100%);
+    bottom: 0;
+  }
+
+  .cake-middle {
+    width: 190px;
+    height: 65px;
+    background: linear-gradient(135deg, #fd746c 0%, #ff9068 100%);
+    bottom: 70px;
+  }
+
+  .cake-top {
+    width: 160px;
+    height: 50px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    bottom: 135px;
+  }
+
+  /* Decoration stripe */
+  .cake-decoration {
+    position: absolute;
+    width: 160px;
+    height: 22px;
+    background: linear-gradient(135deg, #ff8a00 0%, #ff2070 100%);
+    border-radius: 12px;
+    bottom: 155px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: pulse 2.5s ease-in-out infinite;
+    box-shadow: 0 0 12px #ff2070;
+  }
+
+  /* Candle */
+  .candle {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+    border-radius: 5px;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 10;
+  }
+
+  /* Flame */
+  .flame {
+    position: absolute;
+    width: 16px;
+    height: 28px;
+    background: radial-gradient(circle at 50% 40%, #ffd700 40%, #ff4500 90%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    bottom: 185px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0 4px #ffb700);
+    animation: flicker 1.2s infinite alternate ease-in-out;
+    z-index: 20;
+  }
+
+  @keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(calc(-50% + 2px)) scale(1.1); opacity: 0.85; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 12px #ff2070; }
+    50% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 20px #ff6a9e; }
+  }
+
+  /* Sprinkles */
+  .sprinkles {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 220px;
+    height: 180px;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .sprinkle {
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border-radius: 3px;
+    animation: sprinkle-fall 3.5s infinite ease-in-out;
+  }
+
+  @keyframes sprinkle-fall {
+    0% {
+      transform: translateY(-10px) rotate(0deg);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(20px) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  /* Stars twinkle */
+  .star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px white;
+    opacity: 0.8;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(0.7); }
+  }
+
+  /* Confetti shapes */
+  .confetti {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    opacity: 0.9;
+    animation: confetti-fall 4s forwards;
+    z-index: 9999;
+  }
+
+  .confetti.circle {
+    border-radius: 50%;
+  }
+
+  .confetti.triangle {
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 14px solid;
+    background: transparent !important;
+    opacity: 0.9;
+    animation: confetti-fall 4s forwards;
+  }
+
+  .confetti.square {
+    border-radius: 2px;
+  }
+
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-50px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(600px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: #ff6b81;
+    clip-path: polygon(
+      50% 15%, 61% 10%, 75% 10%, 85% 20%, 85% 35%, 75% 50%, 50% 75%, 25% 50%, 15% 35%, 15% 20%, 25% 10%, 39% 10%
+    );
+    opacity: 0.8;
+    animation: floatUp 5s ease forwards;
+    pointer-events: none;
+    filter: drop-shadow(0 0 4px #ff6b81);
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-300px) scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  /* Message styling */
+  .message {
+    font-size: 1.15em;
+    line-height: 1.5;
+    margin: 30px 0 15px;
+    color: #2c3e50;
+    min-height: 90px;
+  }
+
+  .birthday-wish {
+    font-style: italic;
+    color: #e84393;
+    font-size: 1.4em;
+    min-height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .buttons {
+    margin-top: 25px;
+  }
+
+  button {
+    background: linear-gradient(135deg, #e84393 0%, #fd79a8 100%);
+    border: none;
+    padding: 16px 36px;
+    color: white;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(232, 67, 147, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(232, 67, 147, 0.7);
+  }
+
+  /* Created by signature */
+  .signature {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.1em;
+    color: #e84393;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards 1.5s;
+    user-select: none;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" aria-label="Birthday cake card">
+    <h1>🎂 HBD To CC My Bi ! 🎂</h1>
+
+    <div class="cake-container" aria-hidden="true">
+      <div class="cake-base"></div>
+      <div class="cake-middle"></div>
+      <div class="cake-top"></div>
+      <div class="cake-decoration"></div>
+      <div class="candle"></div>
+      <div class="flame"></div>
+      <div class="sprinkles" id="sprinkles"></div>
+      <!-- Stars container -->
+      <div id="stars"></div>
+    </div>
+
+    <div class="message" id="message">
+      <p>Wishing you a day as sweet, sparkling, and amazing as you are!</p>
+      <p>May your heart be full of happiness, your day full of laughter, and your year full of unforgettable moments.</p>
+      <p>Keep shining bright, chasing your dreams, and celebrating every little joy—because the world is brighter with you in it! 🌸✨👑</p>
+    </div>
+
+    <div class="birthday-wish" id="birthdayWish">
+      "You're as lovely as this cake is sweet! 🎀"
+    </div>
+
+    <div class="buttons">
+      <button id="wishBtn" aria-label="Make a birthday wish">Make a Wish! ✨</button>
+    </div>
+
+    <div class="signature" aria-label="Created by signature">Created by icy</div>
+  </div>
+
+  <script>
+    // Create sprinkles with random colors and positions
+    const sprinklesContainer = document.getElementById('sprinkles');
+    const sprinkleColors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#fffa65'];
+
+    for (let i = 0; i < 25; i++) {
+      const sprinkle = document.createElement('div');
+      sprinkle.className = 'sprinkle';
+      sprinkle.style.left = Math.random() * 220 + 'px';
+      sprinkle.style.top = Math.random() * 180 + 'px';
+      sprinkle.style.background = sprinkleColors[Math.floor(Math.random() * sprinkleColors.length)];
+      sprinkle.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
+      sprinkle.style.animationDuration = (2 + Math.random() * 2).toFixed(2) + 's';
+      sprinklesContainer.appendChild(sprinkle);
+    }
+
+    // Create twinkling stars around cake
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 15; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = (Math.random() * 220) + 'px';
+      star.style.top = (Math.random() * 180) + 'px';
+      star.style.animationDelay = (Math.random() * 4) + 's';
+      star.style.width = star.style.height = (4 + Math.random() * 6) + 'px';
+      starsContainer.appendChild(star);
+    }
+
+    // Confetti burst on button click
+    function createConfettiBurst() {
+      const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7', '#fd79a8'];
+      const shapes = ['circle', 'square', 'triangle'];
+      const count = 60;
+
+      for (let i = 0; i < count; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        const shape = shapes[Math.floor(Math.random() * shapes.length)];
+        confetti.classList.add(shape);
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = (Math.random() * window.innerWidth) + 'px';
+        confetti.style.top = '-20px';
+        confetti.style.animationDelay = (Math.random() * 2) + 's';
+        confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
+        document.body.appendChild(confetti);
+
+        // Remove confetti after animation
+        confetti.addEventListener('animationend', () => confetti.remove());
+      }
+    }
+
+    // Floating hearts animation
+    function createFloatingHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = (window.innerWidth / 2 + (Math.random() * 200 - 100)) + 'px';
+      heart.style.bottom = '20px';
+      document.body.appendChild(heart);
+
+      heart.addEventListener('animationend', () => heart.remove());
+    }
+
+    // Typewriter effect for surprise message
+    function typeWriter(element, text, delay = 50) {
+      element.textContent = '';
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, delay);
+        }
+      }
+      type();
+    }
+
+    // Button click handler
+    const wishBtn = document.getElementById('wishBtn');
+    const birthdayWish = document.getElementById('birthdayWish');
+    const flame = document.querySelector('.flame');
+
+    wishBtn.addEventListener('click', () => {
+      // Disable button to prevent spamming
+      wishBtn.disabled = true;
+      wishBtn.style.cursor = 'default';
+
+      // Confetti burst
+      createConfettiBurst();
+
+      // Floating hearts every 700ms for 5 hearts
+      let heartsCount = 0;
+      const heartsInterval = setInterval(() => {
+        createFloatingHeart();
+        heartsCount++;
+        if (heartsCount >= 5) clearInterval(heartsInterval);
+      }, 700);
+
+      // Intensify flame flicker
+      flame.style.animationDuration = '0.4s';
+
+      // Clear message and type surprise message
+      const surpriseText = "✨ Your wish has been granted! May all your dreams come true! ✨";
+      typeWriter(birthdayWish, surpriseText, 60);
+
+      // Change message color and style after typing
+      setTimeout(() => {
+        birthdayWish.style.color = '#fd79a8';
+        birthdayWish.style.fontWeight = '700';
+        birthdayWish.style.textShadow = '0 0 8px #fd79a8';
+      }, surpriseText.length * 60 + 500);
+    });
+  </script>
+</body>
+</html>
